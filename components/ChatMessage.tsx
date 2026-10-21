@@ -19,53 +19,50 @@ export default function ChatMessage({ message }: ChatMessageProps) {
         isUser ? "justify-end" : "justify-start"
       )}
     >
-      <div className={cn(
-        "flex max-w-[95%] sm:max-w-[85%] md:max-w-[75%] gap-2 sm:gap-3.5",
-        isUser ? "flex-row-reverse" : "flex-row"
-      )}>
+      <div
+        className={cn(
+          "flex gap-3 max-w-full",
+          isUser ? "flex-row-reverse max-w-[85%] sm:max-w-[75%]" : "flex-row w-full max-w-[68ch]"
+        )}
+      >
         {/* Avatar */}
         <div className="shrink-0 mt-0.5">
           {isUser ? (
-            <div className="w-8 h-8 rounded-full bg-accent border border-border flex items-center justify-center text-muted-foreground">
-              <User className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-full bg-accent border border-border flex items-center justify-center text-muted-foreground">
+              <User className="w-3.5 h-3.5" />
             </div>
           ) : (
-            <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-sm shadow-primary/20">
-              <Cpu className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <Cpu className="w-3.5 h-3.5" />
             </div>
           )}
         </div>
 
         {/* Content */}
-        <div className={cn(
-          "space-y-1.5 min-w-0 flex flex-col",
-          isUser ? "items-end" : "items-start"
-        )}>
-          <div className={cn(
-            "text-xs font-medium text-muted-foreground px-1",
-            isUser ? "text-right" : "text-left"
-          )}>
-            {isUser ? "You" : "ScrapeSmart AI"}
-          </div>
-          
+        <div
+          className={cn(
+            "min-w-0 flex flex-col space-y-1",
+            isUser ? "items-end" : "items-start w-full"
+          )}
+        >
           <div
             className={cn(
-              "rounded-2xl px-4 py-3 text-sm leading-relaxed transition-colors",
-              isUser
-                ? "bg-primary text-primary-foreground rounded-tr-sm shadow-sm"
-                : "bg-card text-foreground border border-border rounded-tl-sm shadow-xs"
+              "text-xs font-medium text-muted-foreground px-0.5",
+              isUser ? "text-right" : "text-left"
             )}
           >
-            {message.role === "bot" ? (
-              <div className="prose-sm max-w-full overflow-x-auto text-foreground">
-                <MarkdownRenderer content={message.text} />
-              </div>
-            ) : (
-              <div className="whitespace-pre-wrap break-words">
-                {message.text}
-              </div>
-            )}
+            {isUser ? "You" : "ScrapeSmart AI"}
           </div>
+
+          {isUser ? (
+            <div className="bg-accent text-foreground border border-border/60 rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm leading-relaxed max-w-[65ch] whitespace-pre-wrap break-words">
+              {message.text}
+            </div>
+          ) : (
+            <div className="text-foreground text-sm sm:text-base leading-relaxed max-w-[65ch] w-full pt-0.5">
+              <MarkdownRenderer content={message.text} />
+            </div>
+          )}
         </div>
       </div>
     </div>

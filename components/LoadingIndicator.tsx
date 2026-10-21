@@ -12,29 +12,17 @@ export default function LoadingIndicator({
   className = "" 
 }: LoadingIndicatorProps) {
   return (
-    <div className={`flex w-full justify-start items-center gap-3 ${className} animate-pulse`}>
-      {/* Avatar Container */}
-      <div className="shrink-0 relative">
-        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm">
-          <Cpu className="w-4 h-4 text-primary-foreground" />
-        </div>
+    <div className={`flex items-center gap-3 py-2 ${className}`}>
+      <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+        <Cpu className="w-3.5 h-3.5" />
       </div>
-
-      {/* Message Container */}
-      <div className="flex flex-col gap-1">
-        {/* Typing Dots Container */}
-        <div className="flex items-center gap-2 px-4 py-2.5 bg-card border border-border rounded-2xl rounded-tl-none shadow-sm">
-          <div className="flex gap-1.5">
-            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-duration:1s]" />
-            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-duration:1s] [animation-delay:0.2s]" />
-            <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-duration:1s] [animation-delay:0.4s]" />
-          </div>
+      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex items-center gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse [animation-duration:900ms]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse [animation-duration:900ms] [animation-delay:200ms]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse [animation-duration:900ms] [animation-delay:400ms]" />
         </div>
-        
-        {/* Status Text */}
-        <div className="text-xs text-muted-foreground ml-1">
-          {message}
-        </div>
+        <span className="text-xs">{message}</span>
       </div>
     </div>
   );
