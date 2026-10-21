@@ -166,7 +166,7 @@ export default function SeoTab({
           <div className="flex justify-center">
             <button
               onClick={onReAnalyze}
-              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-xl hover:brightness-110 transition-all cursor-pointer shadow-md shadow-primary/20"
+              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
               <span>Retry Audit</span>
@@ -179,7 +179,7 @@ export default function SeoTab({
 
   if (!seoScoreData) return (
     <div className="flex flex-col items-center justify-center py-20 text-center space-y-4 animate-fade-in">
-      <div className="w-14 h-14 rounded-2xl bg-accent flex items-center justify-center text-muted-foreground mb-2">
+      <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center text-muted-foreground mb-2">
         <PieChart className="w-7 h-7" />
       </div>
       <div className="space-y-1">
@@ -189,7 +189,7 @@ export default function SeoTab({
       {onReAnalyze && (
         <button
           onClick={onReAnalyze}
-          className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-xl hover:brightness-110 transition-all cursor-pointer shadow-md shadow-primary/20"
+          className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
         >
           <RotateCcw className="w-4 h-4" />
           <span>Run SEO Audit</span>
@@ -201,7 +201,7 @@ export default function SeoTab({
   return (
     <div className="flex flex-col gap-6 md:gap-8 py-4 animate-fade-in" ref={reportRef}>
       {/* Header Section */}
-      <div className="bg-card border border-border p-4 md:p-6 rounded-2xl shadow-xs relative overflow-hidden">
+      <div className="bg-card border border-border p-4 md:p-6 rounded-xl relative overflow-hidden">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <h2 className="text-lg md:text-xl font-bold tracking-tight text-foreground">SEO Audit</h2>
@@ -213,7 +213,7 @@ export default function SeoTab({
               <button 
                 type="button"
                 onClick={onReAnalyze} 
-                className="flex items-center gap-2 h-9 px-4 bg-primary text-primary-foreground font-semibold text-xs rounded-xl hover:brightness-110 transition-all cursor-pointer shadow-xs"
+                className="flex items-center gap-2 h-9 px-4 bg-primary text-primary-foreground font-medium text-xs rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Re-run Audit</span>
@@ -223,13 +223,13 @@ export default function SeoTab({
                 onClick={handleExportPdf} 
                 disabled={isExporting} 
                 aria-label="Export SEO report as PDF"
-                className="flex items-center justify-center w-9 h-9 border border-border bg-card rounded-xl hover:bg-accent transition-all cursor-pointer disabled:opacity-40"
+                className="flex items-center justify-center w-9 h-9 border border-border bg-card rounded-lg hover:bg-accent transition-colors cursor-pointer disabled:opacity-40"
               >
                 {isExporting ? <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-primary border-t-transparent" /> : <Download className="w-3.5 h-3.5" />}
               </button>
             </div>
             {exportError && (
-              <p className="text-xs text-red-500 font-medium">
+              <p className="text-xs text-destructive font-medium">
                 {exportError}
               </p>
             )}
@@ -239,13 +239,13 @@ export default function SeoTab({
 
       {/* Score and Stats Section */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 items-stretch">
-        <div className="bg-card border border-border p-5 md:p-6 rounded-2xl shadow-xs">
+        <div className="bg-card border border-border p-5 md:p-6 rounded-xl">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 h-full">
             <SeoGauge score={seoScoreData.seo_score} />
             <div className="space-y-4 w-full sm:flex-1 text-center sm:text-left">
               <div className="space-y-1">
                 <div className="text-xs font-medium text-muted-foreground">Overall Status</div>
-                <div className={cn("text-xl font-bold", seoScoreData.seo_score >= 80 ? "text-primary" : seoScoreData.seo_score >= 50 ? "text-amber-500" : "text-red-500")}>
+                <div className={cn("text-xl font-bold", seoScoreData.seo_score >= 80 ? "text-success" : seoScoreData.seo_score >= 50 ? "text-warning" : "text-destructive")}>
                   {seoScoreData.seo_score >= 80 ? "Good" : seoScoreData.seo_score >= 50 ? "Needs Improvement" : "Poor"}
                 </div>
               </div>
@@ -254,17 +254,17 @@ export default function SeoTab({
               </p>
               <div className="flex justify-center sm:justify-start gap-5 pt-1">
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-xs font-semibold text-emerald-500">Passed</span>
+                  <span className="text-xs font-semibold text-success">Passed</span>
                   <span className="text-lg font-bold text-foreground">{stats.passed}</span>
                 </div>
                 <div className="w-px h-7 bg-border mt-1" />
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-xs font-semibold text-amber-500">Warnings</span>
+                  <span className="text-xs font-semibold text-warning">Warnings</span>
                   <span className="text-lg font-bold text-foreground">{stats.warnings}</span>
                 </div>
                 <div className="w-px h-7 bg-border mt-1" />
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-xs font-semibold text-red-500">Errors</span>
+                  <span className="text-xs font-semibold text-destructive">Errors</span>
                   <span className="text-lg font-bold text-foreground">{stats.errors}</span>
                 </div>
               </div>
@@ -272,10 +272,10 @@ export default function SeoTab({
           </div>
         </div>
 
-        <div className="bg-card border border-border p-5 md:p-6 rounded-2xl shadow-xs flex flex-col justify-between">
+        <div className="bg-card border border-border p-5 md:p-6 rounded-xl flex flex-col justify-between">
           <div className="flex items-center justify-between gap-3 mb-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500 shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div className="text-sm font-semibold text-foreground">AI Recommendations</div>
@@ -284,10 +284,10 @@ export default function SeoTab({
               <button 
                 type="button"
                 onClick={handleCopyAdvice} 
-                className="flex items-center gap-1.5 px-2.5 py-1 bg-accent rounded-lg text-xs font-medium text-foreground hover:bg-accent/80 transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-2.5 py-1 bg-accent rounded-lg text-xs font-medium text-foreground hover:bg-accent/80 transition-colors cursor-pointer"
                 aria-label="Copy recommendations"
               >
-                {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                {isCopied ? <Check className="w-3.5 h-3.5 text-success" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{isCopied ? "Copied" : "Copy"}</span>
               </button>
             )}
@@ -296,8 +296,8 @@ export default function SeoTab({
           <div className="flex-1 flex flex-col justify-center min-h-[140px]">
             {isFetchingAdvice ? (
               <div className="flex flex-col items-center justify-center space-y-3 py-6">
-                <div className="animate-spin rounded-full h-6 w-6 border-2 border-indigo-500 border-t-transparent" />
-                <span className="text-xs font-medium text-indigo-500">Generating recommendations...</span>
+                <div className="animate-spin rounded-full h-6 w-6 border-2 border-primary border-t-transparent" />
+                <span className="text-xs font-medium text-primary">Generating recommendations...</span>
               </div>
             ) : aiAdvice ? (
               <div className="overflow-y-auto max-h-[220px] text-xs leading-relaxed text-foreground pr-2">
@@ -311,7 +311,7 @@ export default function SeoTab({
                 <button 
                   type="button"
                   onClick={handleGetAiSuggestions} 
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs px-4 py-2 rounded-xl transition-all cursor-pointer shadow-xs"
+                  className="bg-primary hover:bg-primary-hover text-primary-foreground font-medium text-xs px-4 py-2 rounded-lg transition-colors cursor-pointer"
                 >
                   Generate Recommendations
                 </button>
@@ -325,7 +325,7 @@ export default function SeoTab({
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         <KeywordContext topKeywords={topKeywords} onAnalyzeKeywords={onAnalyzeKeywords} isScraping={isScraping} />
-        <div className="bg-card border border-border p-5 sm:p-6 rounded-2xl shadow-xs">
+        <div className="bg-card border border-border p-5 sm:p-6 rounded-xl">
           <h3 className="text-base font-semibold text-foreground flex items-center gap-2.5 mb-4">
             <span className="w-1.5 h-5 bg-primary rounded-full" />
             Social Sharing Preview

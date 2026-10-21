@@ -62,12 +62,12 @@ export default function SocialPreview({ url }: SocialPreviewProps) {
 
     if (isLoading) {
         return (
-            <div className="animate-pulse flex flex-col gap-0 w-full max-w-lg mx-auto mt-6 rounded-xl overflow-hidden border border-slate-200">
-                <div className="h-48 bg-slate-200 w-full" />
-                <div className="p-4 bg-slate-50 space-y-3">
-                    <div className="h-4 bg-slate-200 rounded w-3/4" />
-                    <div className="h-3 bg-slate-200 rounded w-full" />
-                    <div className="h-3 bg-slate-200 rounded w-5/6" />
+            <div className="animate-pulse flex flex-col gap-0 w-full max-w-lg mx-auto mt-6 rounded-xl overflow-hidden border border-border">
+                <div className="h-48 bg-muted w-full" />
+                <div className="p-4 bg-card space-y-3">
+                    <div className="h-4 bg-muted rounded w-3/4" />
+                    <div className="h-3 bg-muted rounded w-full" />
+                    <div className="h-3 bg-muted rounded w-5/6" />
                 </div>
             </div>
         );
@@ -75,7 +75,7 @@ export default function SocialPreview({ url }: SocialPreviewProps) {
 
     if (error || !previewData) {
         return (
-            <div className="text-center p-6 bg-slate-50 border border-slate-200 rounded-xl mt-6 text-slate-500 text-sm">
+            <div className="text-center p-6 bg-card border border-border rounded-xl mt-6 text-muted-foreground text-sm">
                 Could not generate social preview for this URL.
             </div>
         );
@@ -88,30 +88,30 @@ export default function SocialPreview({ url }: SocialPreviewProps) {
     const imageUrl = rawImageUrl ? `https://wsrv.nl/?url=${encodeURIComponent(rawImageUrl)}` : '';
 
     return (
-        <div className="mt-8 pt-8 border-t border-slate-100 animate-fade-in">
+        <div className="mt-8 pt-8 border-t border-border animate-fade-in">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-2">
                 <div>
-                    <h4 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-                        📱 Social Media Preview
+                    <h4 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                        Social Media Preview
                     </h4>
-                    <p className="text-sm text-slate-500">
-                        This is how your link appears when shared on Twitter, LinkedIn, or iMessage.
+                    <p className="text-sm text-muted-foreground">
+                        How this link appears when shared on social platforms and messaging apps.
                     </p>
                 </div>
             </div>
 
-            <div className="flex justify-center bg-slate-50 p-6 rounded-2xl border border-slate-100">
+            <div className="flex justify-center bg-accent/40 p-6 rounded-2xl border border-border">
                 {/* Twitter / LinkedIn Style Card */}
-                <div className="w-full max-w-lg bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                <div className="w-full max-w-lg bg-card rounded-xl overflow-hidden border border-border transition-colors cursor-pointer group">
                     {/* Card Image */}
-                    <div className="relative h-52 sm:h-64 overflow-hidden bg-slate-100 border-b border-slate-200">
+                    <div className="relative h-52 sm:h-64 overflow-hidden bg-accent/30 border-b border-border">
                         <Image
                             width={100}
                             height={100}
                             src={imageUrl}
                             alt="Social Preview"
                             crossOrigin="anonymous"
-                            className="w-full h-full object-contain transition-transform duration-500"
+                            className="w-full h-full object-contain"
                             onError={(e) => {
                                 // Hide image block if it totally fails
                                 (e.target as HTMLImageElement).style.display = 'none';
@@ -121,14 +121,14 @@ export default function SocialPreview({ url }: SocialPreviewProps) {
 
                     {/* Card Content */}
                     <div className="p-4 sm:p-5">
-                        <p className="text-xs font-medium text-slate-500 mb-1">
+                        <p className="text-xs font-medium text-muted-foreground mb-1">
                             {previewData.publisher || new URL(url).hostname.replace('www.', '')}
                         </p>
-                        <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-2 line-clamp-1">
+                        <h3 className="text-base sm:text-lg font-semibold text-foreground leading-snug mb-2 line-clamp-1">
                             {previewData.title || "Website Title Missing"}
                         </h3>
-                        <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
-                            {previewData.description || "No meta description provided. Search engines and social platforms will struggle to understand this page."}
+                        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                            {previewData.description || "No meta description provided."}
                         </p>
                     </div>
                 </div>

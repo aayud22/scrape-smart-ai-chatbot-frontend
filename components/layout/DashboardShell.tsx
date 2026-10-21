@@ -65,7 +65,7 @@ export function DashboardShell({
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
               aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-              className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-foreground dark:bg-background border border-border flex items-center justify-center cursor-pointer text-muted-foreground hover:text-foreground transition-all z-50 shadow-sm"
+              className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-card border border-border flex items-center justify-center cursor-pointer text-muted-foreground hover:text-foreground transition-colors z-50"
             >
               {isCollapsed ? <ChevronRight className="w-3 h-3" /> : <ChevronLeft className="w-3 h-3" />}
             </button>
@@ -82,13 +82,13 @@ export function DashboardShell({
               initial={{ y: -64, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="h-16 flex items-center px-6 border-b border-border bg-card/80 backdrop-blur-md sticky top-0 z-30 shrink-0"
+              className="h-16 flex items-center px-6 border-b border-border bg-card sticky top-0 z-30 shrink-0"
             >
               <div className="flex-1 flex items-center justify-center relative h-full">
                 {/* Center URL Pill */}
                 <div 
                   onClick={onBack}
-                  className="flex items-center h-9 pl-4 pr-3 bg-accent/50 hover:bg-accent rounded-full border border-border transition-all cursor-pointer group shadow-sm max-w-[80vw] sm:max-w-md truncate"
+                  className="flex items-center h-9 pl-4 pr-3 bg-accent/50 hover:bg-accent rounded-full border border-border transition-colors cursor-pointer group max-w-[80vw] sm:max-w-md truncate"
                 >
                   <div className="flex items-center gap-2 text-xs font-medium truncate">
                     <Globe className="w-3.5 h-3.5 text-primary shrink-0 group-hover:rotate-180 transition-transform duration-500" />

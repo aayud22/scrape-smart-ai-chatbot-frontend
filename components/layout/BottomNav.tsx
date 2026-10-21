@@ -25,7 +25,7 @@ const NAV_ITEMS = [
 
 export function BottomNav({ activeTab, setActiveTab }: BottomNavProps) {
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-md border-t border-border px-2 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] z-50 flex items-center justify-around shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-border px-2 pt-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] z-50 flex items-center justify-around">
       {NAV_ITEMS.map((item) => {
         const isActive = activeTab === item.id;
         return (

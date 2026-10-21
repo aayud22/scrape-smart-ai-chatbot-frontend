@@ -25,19 +25,19 @@ interface PagesTabProps {
 
 const StatusBadge = ({ status }: { status: number }) => {
   if (status >= 400) return (
-    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-red-500/10 border border-red-500/20 rounded-lg text-xs font-semibold text-red-500">
+    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-destructive/10 border border-destructive/20 rounded-lg text-xs font-medium text-destructive">
       <XCircle className="w-3.5 h-3.5" />
       <span>{status} Error</span>
     </div>
   );
   if (status >= 300) return (
-    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-muted border border-border rounded-lg text-xs font-semibold text-muted-foreground">
+    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-muted border border-border rounded-lg text-xs font-medium text-muted-foreground">
       <AlertTriangle className="w-3.5 h-3.5" />
       <span>{status} Redirect</span>
     </div>
   );
   return (
-    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-primary/10 border border-primary/20 rounded-lg text-xs font-semibold text-primary">
+    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-success/10 border border-success/20 rounded-lg text-xs font-medium text-success">
       <CheckCircle2 className="w-3.5 h-3.5" />
       <span>{status} OK</span>
     </div>
@@ -110,7 +110,7 @@ const LivePreview = ({
         width: 320,
         zIndex: 9999,
       }}
-      className="pointer-events-none rounded-xl border border-border bg-card/95 shadow-xl backdrop-blur-md overflow-hidden animate-in fade-in zoom-in-95 duration-150"
+      className="pointer-events-none rounded-xl border border-border bg-card overflow-hidden animate-in fade-in zoom-in-95 duration-150"
     >
       <div className="relative aspect-video w-full bg-muted/40">
         {!hasError ? (
@@ -252,7 +252,7 @@ export default function PagesTab({ isMapping, mapLinksData }: PagesTabProps) {
           </div>
           <div className="h-1 bg-accent rounded-full overflow-hidden">
             <div 
-              className={cn("h-full rounded-full transition-all", page.titleLength > 60 ? "bg-amber-500" : "bg-primary")} 
+              className={cn("h-full rounded-full transition-all", page.titleLength > 60 ? "bg-warning" : "bg-primary")} 
               style={{ width: `${Math.min((page.titleLength / 70) * 100, 100)}%` }}
             />
           </div>
@@ -266,7 +266,7 @@ export default function PagesTab({ isMapping, mapLinksData }: PagesTabProps) {
   if (!mapLinksData || mapLinksData.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center space-y-4 animate-fade-in">
-        <div className="w-14 h-14 rounded-2xl bg-accent flex items-center justify-center text-muted-foreground mb-2">
+        <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center text-muted-foreground mb-2">
           <Eye className="w-7 h-7" />
         </div>
         <div className="space-y-1">
@@ -289,14 +289,14 @@ export default function PagesTab({ isMapping, mapLinksData }: PagesTabProps) {
         <div className="relative group w-full sm:w-64">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground group-focus-within:text-primary transition-colors" />
           <input 
-            type="text"
+            type="text" 
             placeholder="Search pages..."
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
               setCurrentPage(1);
             }}
-            className="h-9 pl-9 pr-4 bg-card border border-border rounded-xl text-xs font-normal placeholder:text-muted-foreground/60 focus:border-primary/50 outline-none w-full transition-all"
+            className="h-9 pl-9 pr-4 bg-card border border-border rounded-lg text-xs font-normal placeholder:text-muted-foreground/60 focus:border-primary/50 outline-none w-full transition-colors"
             aria-label="Search pages"
           />
         </div>

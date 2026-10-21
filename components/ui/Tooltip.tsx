@@ -130,7 +130,7 @@ export function Tooltip({
           >
             <div
               className={cn(
-                "relative bg-foreground text-background text-xs font-medium px-2.5 py-1 rounded-md shadow-lg whitespace-nowrap",
+                "relative bg-foreground text-background text-xs font-medium px-2.5 py-1 rounded-md whitespace-nowrap",
                 className
               )}
             >

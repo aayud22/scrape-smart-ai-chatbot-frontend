@@ -48,7 +48,7 @@ export default function MapTab({ isMapping, mapLinksData, error }: MapTabProps) 
     <ReactFlowProvider>
       <div className="flex flex-col h-full overflow-hidden">
         {/* ── Sub-header Toolbar ── */}
-        <div className="shrink-0 flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-4 sm:px-6 py-2.5 border-b border-border bg-card/80 backdrop-blur-md">
+        <div className="shrink-0 flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-4 sm:px-6 py-2.5 border-b border-border bg-card">
           {/* Left: Title */}
           <h2 className="text-sm font-semibold tracking-tight whitespace-nowrap text-foreground">
             Site Graph
@@ -135,7 +135,7 @@ export default function MapTab({ isMapping, mapLinksData, error }: MapTabProps) 
             />
 
             {/* Bottom-left status badge */}
-            <div className="absolute bottom-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 bg-card/90 backdrop-blur-md border border-border rounded-lg text-xs font-medium text-muted-foreground shadow-xs">
+            <div className="absolute bottom-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 bg-card border border-border rounded-lg text-xs font-medium text-muted-foreground">
               <div className="w-2 h-2 rounded-full bg-primary" />
               <span>Interactive Graph</span>
             </div>
@@ -145,10 +145,10 @@ export default function MapTab({ isMapping, mapLinksData, error }: MapTabProps) 
           <div
             className={cn(
               "flex flex-col min-h-0 h-full overflow-hidden bg-card border-l border-border transition-all duration-300 shrink-0 z-20",
-              "absolute inset-y-0 right-0 shadow-2xl",
-              "@2xl:relative @2xl:shadow-none",
+              "absolute inset-y-0 right-0",
+              "@2xl:relative",
               showPanel
-                ? "w-full max-w-md @2xl:w-[360px] @3xl:w-[400px]"
+                ? "w-full max-w-md @2xl:w-90 @3xl:w-100"
                 : "w-0 border-l-0"
             )}
           >
@@ -169,7 +169,7 @@ export default function MapTab({ isMapping, mapLinksData, error }: MapTabProps) 
         <button
           type="button"
           onClick={() => setShowPanel(!showPanel)}
-          className="md:hidden fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] right-4 z-50 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-md active:scale-95 transition-transform focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer"
+          className="md:hidden fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] right-4 z-50 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary-hover transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer"
           aria-label={showPanel ? "Hide directory panel" : "Show directory panel"}
         >
           {showPanel ? (

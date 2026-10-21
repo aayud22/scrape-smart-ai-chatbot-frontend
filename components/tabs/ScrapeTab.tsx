@@ -31,7 +31,7 @@ const ConfidenceDots = ({ percentage }: { percentage: number }) => {
           key={i} 
           className={cn(
             "w-1.5 h-1.5 rounded-full",
-            percentage > (i * 30) ? "bg-emerald-500" : "bg-muted"
+            percentage > (i * 30) ? "bg-success" : "bg-muted"
           )} 
         />
       ))}

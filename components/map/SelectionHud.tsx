@@ -20,13 +20,10 @@ const SelectionHud = ({ selectedNodes, onClear }: SelectionHudProps) => {
         exit={{ y: 100, opacity: 0 }}
         className="fixed bottom-32 left-1/2 -translate-x-1/2 z-100 w-full max-w-2xl px-4 pointer-events-none"
       >
-        <div className="bg-card/80 backdrop-blur-3xl border border-border/50 rounded-[2.5rem] shadow-2xl p-6 pointer-events-auto ring-1 ring-white/10 overflow-hidden relative">
-          {/* Background Glow */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-primary/50 to-transparent" />
-          
+        <div className="bg-card border border-border rounded-xl p-5 pointer-events-auto overflow-hidden relative">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                 <Target className="w-4 h-4" />
               </div>
               <div>

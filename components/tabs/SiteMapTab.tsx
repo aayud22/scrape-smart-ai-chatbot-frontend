@@ -47,7 +47,7 @@ export default function SiteMapTab({
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {/* View Switcher Header */}
-      <div className="shrink-0 flex items-center justify-between gap-3 px-4 sm:px-6 py-2.5 border-b border-border bg-card/80 backdrop-blur-md">
+      <div className="shrink-0 flex items-center justify-between gap-3 px-4 sm:px-6 py-2.5 border-b border-border bg-card">
         <div className="flex items-center gap-2">
           <span className="text-xs font-semibold text-foreground">
             Site Map

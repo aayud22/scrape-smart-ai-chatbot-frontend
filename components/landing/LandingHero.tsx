@@ -72,12 +72,12 @@ export function LandingHero({
   return (
     <div className="relative min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300 overflow-x-hidden pt-20">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-12 py-4 md:py-6 bg-background/80 backdrop-blur-md border-b border-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-12 py-4 md:py-6 bg-background border-b border-border">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center shadow-sm shadow-primary/20 shrink-0">
-            <Cpu className="w-5 h-5 text-primary-foreground" />
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shrink-0">
+            <Cpu className="w-4 h-4 text-primary-foreground" />
           </div>
-          <span className="text-lg font-bold tracking-tight whitespace-nowrap">
+          <span className="text-base font-semibold tracking-tight whitespace-nowrap">
             ScrapeSmart <span className="text-primary">AI</span>
           </span>
         </div>
@@ -86,7 +86,7 @@ export function LandingHero({
           <button 
             type="button"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-xl border border-border hover:bg-accent transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer"
+            className="p-2 rounded-lg border border-border hover:bg-accent transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer"
             aria-label="Toggle color theme"
           >
             {!mounted ? (
@@ -105,13 +105,13 @@ export function LandingHero({
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="text-center space-y-6 w-full"
         >
           {/* Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.15] text-balance">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-semibold tracking-tight leading-[1.15] text-balance">
             Ask any website <br className="hidden sm:inline" />
-            <span className="text-primary">a question.</span>
+            <span className="text-primary font-normal italic">a question.</span>
           </h1>
 
           {/* Subtitle */}
@@ -123,16 +123,16 @@ export function LandingHero({
           {/* Command Bar Area */}
           <div className="w-full max-w-2xl mx-auto space-y-4 pt-2">
             <div className={cn(
-              "group relative z-20 flex flex-col sm:flex-row items-stretch p-1.5 rounded-2xl border bg-card transition-all shadow-sm focus-within:ring-2 focus-within:ring-primary/40 focus-within:border-primary",
+              "group relative z-20 flex flex-col sm:flex-row items-stretch p-1.5 rounded-xl border bg-card transition-colors focus-within:ring-2 focus-within:ring-primary/40 focus-within:border-primary",
               urlError ? "border-destructive ring-1 ring-destructive" : "border-border"
             )}>
               {/* Protocol Dropdown */}
               <div 
                 ref={dropdownRef}
-                className="relative flex items-center px-4 border-b sm:border-b-0 sm:border-r border-border h-12 cursor-pointer hover:bg-accent/50 rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none transition-colors"
+                className="relative flex items-center px-4 border-b sm:border-b-0 sm:border-r border-border h-12 cursor-pointer hover:bg-accent/50 rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none transition-colors"
                 onClick={() => setIsProtocolOpen(!isProtocolOpen)}
               >
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
                   <span>{protocol}</span>
                   <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", isProtocolOpen && "rotate-180")} />
                 </div>
@@ -144,7 +144,7 @@ export function LandingHero({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 6 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute top-[52px] -left-1 w-32 bg-card border border-border rounded-xl shadow-lg z-50 overflow-hidden py-1"
+                      className="absolute top-[52px] -left-1 w-32 bg-card border border-border rounded-lg shadow-xs z-50 overflow-hidden py-1"
                     >
                       {["https://", "http://"].map((p) => (
                         <button 
@@ -192,7 +192,7 @@ export function LandingHero({
                 onClick={handleStartAnalysis}
                 disabled={!domainInput.trim() || !!urlError}
                 aria-label="Analyze Website"
-                className="h-11 sm:h-auto px-6 bg-primary hover:brightness-110 text-primary-foreground rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2 disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed shadow-sm shadow-primary/20 shrink-0 mt-1 sm:mt-0"
+                className="h-11 sm:h-auto px-6 bg-primary hover:bg-primary-hover text-primary-foreground rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed shrink-0 mt-1 sm:mt-0"
               >
                 <span>Analyze</span>
                 <ArrowRight className="w-4 h-4" />

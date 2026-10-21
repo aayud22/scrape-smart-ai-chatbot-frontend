@@ -10,9 +10,9 @@ export const SeoGauge = ({ score }: SeoGaugeProps) => {
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (score / 100) * circumference;
 
-  let color = "text-red-500";
-  if (score >= 80) color = "text-primary";
-  else if (score >= 50) color = "text-amber-500";
+  let color = "text-destructive";
+  if (score >= 80) color = "text-success";
+  else if (score >= 50) color = "text-warning";
 
   return (
     <div className="relative flex items-center justify-center w-44 aspect-square shrink-0">
