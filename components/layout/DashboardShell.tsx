@@ -79,16 +79,16 @@ export function DashboardShell({
         <AnimatePresence>
           {isAppActive && (
             <motion.header
-              initial={{ y: -64, opacity: 0 }}
+              initial={{ y: -40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.2 }}
               className="h-16 flex items-center px-6 border-b border-border bg-card sticky top-0 z-30 shrink-0"
             >
               <div className="flex-1 flex items-center justify-center relative h-full">
                 {/* Center URL Pill */}
                 <div 
                   onClick={onBack}
-                  className="flex items-center h-9 pl-4 pr-3 bg-accent/50 hover:bg-accent rounded-full border border-border transition-colors cursor-pointer group max-w-[80vw] sm:max-w-md truncate"
+                  className="flex items-center h-9 pl-4 pr-3 bg-accent/60 hover:bg-accent rounded-full border border-border transition-colors cursor-pointer group max-w-[80vw] sm:max-w-md truncate"
                 >
                   <div className="flex items-center gap-2 text-xs font-medium truncate">
                     <Globe className="w-3.5 h-3.5 text-primary shrink-0 group-hover:rotate-180 transition-transform duration-500" />
@@ -98,12 +98,12 @@ export function DashboardShell({
                         e.stopPropagation();
                         if (targetUrl) window.open(targetUrl, '_blank');
                       }}
-                      className="text-foreground hover:text-primary transition-colors hover:underline decoration-primary/30 underline-offset-4 truncate"
+                      className="text-foreground hover:text-primary transition-colors hover:underline decoration-primary/30 underline-offset-4 truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
                     >
                       {headerContent || 'Active session'}
                     </button>
                     <div className="w-px h-3 bg-border mx-1 shrink-0" />
-                    <RefreshCw className="w-3 h-3 text-muted-foreground shrink-0 group-hover:text-primary group-hover:rotate-180 transition-all duration-500" />
+                    <RefreshCw className="w-3.5 h-3.5 text-muted-foreground shrink-0 group-hover:text-primary transition-colors" />
                   </div>
                 </div>
               </div>
@@ -111,10 +111,10 @@ export function DashboardShell({
               {/* Header Actions */}
               <div className="absolute right-6 flex items-center gap-4">
                 {/* Mode Toggle */}
-                <div className="flex items-center gap-1 bg-accent/50 p-1 rounded-lg border border-border">
+                <div className="flex items-center gap-1 bg-accent/60 p-1 rounded-lg border border-border">
                   <button
                     onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    className="p-1.5 hover:bg-accent rounded-md text-muted-foreground transition-colors cursor-pointer"
+                    className="p-1.5 hover:bg-accent rounded-md text-muted-foreground transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     aria-label="Toggle theme"
                   >
                     {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -146,7 +146,7 @@ export function DashboardShell({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.18 }}
                 className="w-full h-full"
               >
                 {children}

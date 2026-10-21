@@ -34,15 +34,14 @@ export function BottomNav({ activeTab, setActiveTab }: BottomNavProps) {
             onClick={() => setActiveTab(item.id as SidebarItemType)}
             aria-label={item.label}
             className={cn(
-              "flex flex-col items-center justify-center gap-1 transition-all duration-200 min-w-12 cursor-pointer",
-              isActive ? "text-primary scale-105" : "text-muted-foreground hover:text-foreground"
+              "flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-lg transition-colors duration-150 min-w-16 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+              isActive
+                ? "bg-accent text-foreground font-semibold"
+                : "text-muted-foreground hover:text-foreground font-normal"
             )}
           >
-            <item.icon className={cn("w-5 h-5", isActive ? "stroke-[2px]" : "stroke-2")} />
-            <span className="text-xs font-medium">{item.label}</span>
-            {isActive && (
-              <span className="w-1 h-1 rounded-full bg-primary" />
-            )}
+            <item.icon className={cn("w-4 h-4 stroke-[1.75px]", isActive && "text-primary")} />
+            <span className="text-xs leading-none">{item.label}</span>
           </button>
         );
       })}
