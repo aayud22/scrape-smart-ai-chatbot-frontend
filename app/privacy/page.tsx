@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 
 const siteUrl = (
@@ -22,14 +23,22 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between bg-background text-foreground">
       <main className="mx-auto w-full max-w-3xl px-6 py-16 flex-1">
-        <h1 className="text-3xl font-bold tracking-tight">Privacy Policy</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Last updated: October 20, 2026</p>
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+          >
+            ← Back to ScrapeSmart AI
+          </Link>
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground">Privacy policy</h1>
+        <p className="mt-2 text-xs text-muted-foreground">Last updated: October 20, 2026</p>
 
         <div className="mt-10 space-y-8 text-sm leading-relaxed text-foreground/90">
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">1. Overview</h2>
+            <h2 className="text-base font-semibold text-foreground">1. Overview</h2>
             <p>
               ScrapeSmart AI is an open-source developer project that reads publicly
               available web pages you submit and answers questions about their content.
@@ -38,7 +47,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">2. Information You Submit</h2>
+            <h2 className="text-base font-semibold text-foreground">2. Information you submit</h2>
             <p>
               When you use ScrapeSmart AI, you provide a publicly accessible website URL
               and optional questions. The URL is sent to a backend service that fetches
@@ -54,25 +63,25 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">3. Third-Party Services and Previews</h2>
+            <h2 className="text-base font-semibold text-foreground">3. Third-party services and previews</h2>
             <p>
               Requests are processed using a backend API service and third-party LLM
               providers. In addition, to generate screenshots and social link previews,
-              the browser sends analyzed page URLs to <code>api.microlink.io</code>, and
-              preview images are proxied through <code>wsrv.nl</code>. These external services
+              the browser sends analyzed page URLs to <code className="font-mono text-xs bg-accent px-1.5 py-0.5 rounded border border-border">api.microlink.io</code>, and
+              preview images are proxied through <code className="font-mono text-xs bg-accent px-1.5 py-0.5 rounded border border-border">wsrv.nl</code>. These external services
               process data in accordance with their respective privacy policies.
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">4. Contact</h2>
+            <h2 className="text-base font-semibold text-foreground">4. Contact</h2>
             <p>
               For questions or feedback, visit the project repository on{" "}
               <a
                 href="https://github.com/aayud22/scrape-smart-ai-chatbot-frontend"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:underline font-medium"
+                className="text-primary hover:underline font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
               >
                 GitHub
               </a>.

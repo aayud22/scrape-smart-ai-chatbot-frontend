@@ -14,7 +14,7 @@ export default function ErrorState({
 }: ErrorStateProps) {
   return (
     <div
-      className="relative rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 shadow-xs animate-fade-in"
+      className="relative rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 animate-fade-in"
       role="alert"
       aria-live="polite"
     >

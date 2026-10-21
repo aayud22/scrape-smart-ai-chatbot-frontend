@@ -33,7 +33,7 @@ export default function SiteMapTab({
   if (!mapLinksData || mapLinksData.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center animate-fade-in w-full">
-        <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center text-muted-foreground mb-4">
+        <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center text-primary mb-2">
           <Network className="w-6 h-6" />
         </div>
         <h3 className="text-base font-semibold text-foreground">No site map data</h3>

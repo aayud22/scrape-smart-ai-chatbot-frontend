@@ -266,8 +266,8 @@ export default function PagesTab({ isMapping, mapLinksData }: PagesTabProps) {
   if (!mapLinksData || mapLinksData.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center space-y-4 animate-fade-in">
-        <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center text-muted-foreground mb-2">
-          <Eye className="w-7 h-7" />
+        <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center text-primary mb-2">
+          <Eye className="w-6 h-6" />
         </div>
         <div className="space-y-1">
           <h3 className="text-base font-semibold text-foreground">No pages found</h3>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 
 const siteUrl = (
@@ -22,14 +23,22 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-screen flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between bg-background text-foreground">
       <main className="mx-auto w-full max-w-3xl px-6 py-16 flex-1">
-        <h1 className="text-3xl font-bold tracking-tight">Terms of Service</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Last updated: August 3, 2026</p>
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+          >
+            ← Back to ScrapeSmart AI
+          </Link>
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground">Terms of service</h1>
+        <p className="mt-2 text-xs text-muted-foreground">Last updated: August 3, 2026</p>
 
         <div className="mt-10 space-y-8 text-sm leading-relaxed text-foreground/90">
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">1. Acceptance of Terms</h2>
+            <h2 className="text-base font-semibold text-foreground">1. Acceptance of terms</h2>
             <p>
               By accessing or using ScrapeSmart AI (&quot;the Service&quot;), you agree to be bound
               by these Terms of Service. If you do not agree to these terms, do not use
@@ -38,7 +47,7 @@ export default function TermsOfServicePage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">2. Description of the Service</h2>
+            <h2 className="text-base font-semibold text-foreground">2. Description of the service</h2>
             <p>
               The Service allows you to submit a publicly accessible website URL to analyze
               its structure, SEO signals, and ask questions about its content. Answers are
@@ -48,7 +57,7 @@ export default function TermsOfServicePage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">3. Acceptable Use</h2>
+            <h2 className="text-base font-semibold text-foreground">3. Acceptable use</h2>
             <p>You agree not to use the Service to:</p>
             <ul className="list-disc pl-5 space-y-1">
               <li>Submit URLs that you do not have permission or legal right to access or inspect.</li>
@@ -58,7 +67,7 @@ export default function TermsOfServicePage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">4. Disclaimers and Limitation of Liability</h2>
+            <h2 className="text-base font-semibold text-foreground">4. Disclaimers and limitation of liability</h2>
             <p>
               The Service is provided on an &quot;as is&quot; and &quot;as available&quot; basis without warranties of
               any kind. To the maximum extent permitted by law, the maintainers shall not be liable
@@ -67,14 +76,14 @@ export default function TermsOfServicePage() {
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">5. Contact</h2>
+            <h2 className="text-base font-semibold text-foreground">5. Contact</h2>
             <p>
               For questions regarding these Terms, visit the project repository on{" "}
               <a
                 href="https://github.com/aayud22/scrape-smart-ai-chatbot-frontend"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:underline font-medium"
+                className="text-primary hover:underline font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
               >
                 GitHub
               </a>.

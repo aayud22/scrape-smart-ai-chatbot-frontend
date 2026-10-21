@@ -13,36 +13,66 @@ export default function OpenGraphImage() {
     (
       <div
         style={{
-          background: "#09090b",
+          background: "#FAF8F5",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          padding: "80px",
+          padding: "96px",
           fontFamily: "system-ui, -apple-system, sans-serif",
+          border: "1px solid #E7E1D8",
         }}
       >
         <div
           style={{
-            fontSize: 64,
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            marginBottom: "32px",
+          }}
+        >
+          <div
+            style={{
+              width: "16px",
+              height: "16px",
+              borderRadius: "4px",
+              background: "#B4532F",
+            }}
+          />
+          <span
+            style={{
+              fontSize: "20px",
+              fontWeight: 600,
+              color: "#B4532F",
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+            }}
+          >
+            Developer Portfolio Project
+          </span>
+        </div>
+        <div
+          style={{
+            fontSize: 68,
             fontWeight: 700,
-            color: "#ffffff",
+            color: "#2B2622",
             marginBottom: 24,
+            letterSpacing: "-0.02em",
           }}
         >
           ScrapeSmart AI
         </div>
         <div
           style={{
-            fontSize: 28,
-            color: "#a1a1aa",
-            maxWidth: 900,
-            lineHeight: 1.4,
+            fontSize: 30,
+            color: "#6B635A",
+            maxWidth: 960,
+            lineHeight: 1.5,
           }}
         >
-          Chat with any website, audit technical SEO, scrape content, and explore site maps.
+          Explore page structure, audit technical SEO, scrape content, and chat with any website.
         </div>
       </div>
     ),
