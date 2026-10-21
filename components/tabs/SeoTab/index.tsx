@@ -133,6 +133,8 @@ export default function SeoTab({
       const opt = {
         margin: 10,
         filename: `SEO-Report-${new URL(url).hostname.replace("www.", "")}.pdf`,
+        image: { type: "jpeg" as const, quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#FAF8F5" },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" as const }
       };
       await html2pdf().from(reportRef.current).set(opt).save();
@@ -204,7 +206,7 @@ export default function SeoTab({
       <div className="bg-card border border-border p-4 md:p-6 rounded-xl relative overflow-hidden">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
-            <h2 className="text-lg md:text-xl font-bold tracking-tight text-foreground">SEO Audit</h2>
+            <h2 className="text-lg md:text-xl font-serif font-normal tracking-tight text-foreground">SEO Audit</h2>
             <p className="text-xs sm:text-sm text-muted-foreground">Technical analysis of page structure, headings, and meta tags.</p>
           </div>
 
@@ -213,7 +215,7 @@ export default function SeoTab({
               <button 
                 type="button"
                 onClick={onReAnalyze} 
-                className="flex items-center gap-2 h-9 px-4 bg-primary text-primary-foreground font-medium text-xs rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
+                className="flex items-center gap-2 h-9 px-3.5 bg-primary hover:bg-primary-hover text-primary-foreground font-medium text-xs rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Re-run Audit</span>
@@ -223,9 +225,14 @@ export default function SeoTab({
                 onClick={handleExportPdf} 
                 disabled={isExporting} 
                 aria-label="Export SEO report as PDF"
-                className="flex items-center justify-center w-9 h-9 border border-border bg-card rounded-lg hover:bg-accent transition-colors cursor-pointer disabled:opacity-40"
+                className="flex items-center gap-2 h-9 px-3.5 border border-border bg-card rounded-lg hover:bg-accent text-foreground text-xs font-medium transition-colors cursor-pointer disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
-                {isExporting ? <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-primary border-t-transparent" /> : <Download className="w-3.5 h-3.5" />}
+                {isExporting ? (
+                  <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-primary border-t-transparent" />
+                ) : (
+                  <Download className="w-3.5 h-3.5 text-muted-foreground" />
+                )}
+                <span>{isExporting ? "Exporting..." : "Export PDF"}</span>
               </button>
             </div>
             {exportError && (
