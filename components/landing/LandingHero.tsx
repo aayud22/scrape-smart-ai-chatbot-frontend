@@ -101,30 +101,30 @@ export function LandingHero({
       </nav>
 
       {/* Hero Section */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 max-w-4xl mx-auto w-full pb-20 mt-8 sm:mt-12">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 max-w-3xl mx-auto w-full py-20 sm:py-28">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="text-center space-y-6 w-full"
+          transition={{ duration: 0.2 }}
+          className="text-center space-y-8 w-full"
         >
-          {/* Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-semibold tracking-tight leading-[1.15] text-balance">
-            Ask any website <br className="hidden sm:inline" />
-            <span className="text-primary font-normal italic">a question.</span>
-          </h1>
+          {/* Title & Description */}
+          <div className="space-y-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-normal tracking-tight leading-[1.15] text-balance text-foreground">
+              Ask any website <br className="hidden sm:inline" />
+              <span className="text-primary italic">a question.</span>
+            </h1>
 
-          {/* Subtitle */}
-          <p className="max-w-xl mx-auto text-muted-foreground text-base sm:text-lg font-normal leading-relaxed">
-            Paste a website URL, and ScrapeSmart AI reads the page and answers
-            from what it actually says.
-          </p>
+            <p className="max-w-lg mx-auto text-muted-foreground text-base sm:text-lg font-normal leading-relaxed">
+              Paste a URL to explore page structure, technical signals, and chat with page content.
+            </p>
+          </div>
 
           {/* Command Bar Area */}
           <div className="w-full max-w-2xl mx-auto space-y-4 pt-2">
             <div className={cn(
-              "group relative z-20 flex flex-col sm:flex-row items-stretch p-1.5 rounded-xl border bg-card transition-colors focus-within:ring-2 focus-within:ring-primary/40 focus-within:border-primary",
-              urlError ? "border-destructive ring-1 ring-destructive" : "border-border"
+              "group relative z-20 flex flex-col sm:flex-row items-stretch p-1.5 rounded-xl border bg-card transition-colors focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2",
+              urlError ? "border-destructive" : "border-border"
             )}>
               {/* Protocol Dropdown */}
               <div 
@@ -140,9 +140,9 @@ export function LandingHero({
                 <AnimatePresence>
                   {isProtocolOpen && (
                     <motion.div 
-                      initial={{ opacity: 0, y: 6 }}
+                      initial={{ opacity: 0, y: 4 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 6 }}
+                      exit={{ opacity: 0, y: 4 }}
                       transition={{ duration: 0.15 }}
                       className="absolute top-[52px] -left-1 w-32 bg-card border border-border rounded-lg shadow-xs z-50 overflow-hidden py-1"
                     >
@@ -158,7 +158,7 @@ export function LandingHero({
                           }}
                           className={cn(
                             "w-full text-left px-3.5 py-2 text-xs font-medium transition-colors cursor-pointer",
-                            protocol === p ? "text-primary bg-primary/10" : "text-foreground hover:bg-accent"
+                            protocol === p ? "text-primary bg-accent font-semibold" : "text-foreground hover:bg-accent"
                           )}
                         >
                           {p}
@@ -173,7 +173,7 @@ export function LandingHero({
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Enter URL (e.g. example.com)"
+                placeholder="Enter domain (e.g. example.com)"
                 value={domainInput}
                 onChange={(e) => {
                   const { cleanValue, nextProtocol } = normalizeDomainInput(e.target.value);
@@ -192,7 +192,7 @@ export function LandingHero({
                 onClick={handleStartAnalysis}
                 disabled={!domainInput.trim() || !!urlError}
                 aria-label="Analyze Website"
-                className="h-11 sm:h-auto px-6 bg-primary hover:bg-primary-hover text-primary-foreground rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed shrink-0 mt-1 sm:mt-0"
+                className="h-11 sm:h-auto px-6 bg-primary hover:bg-primary-hover text-primary-foreground rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed shrink-0 mt-1 sm:mt-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <span>Analyze</span>
                 <ArrowRight className="w-4 h-4" />
@@ -207,14 +207,14 @@ export function LandingHero({
             )}
 
             {/* Clickable Example URLs */}
-            <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-3">
               <span className="text-xs text-muted-foreground">Examples:</span>
               {EXAMPLE_URLS.map((example) => (
                 <button
                   key={example.value}
                   type="button"
                   onClick={() => handleSelectExample(example.value)}
-                  className="px-2.5 py-1 text-xs font-medium rounded-lg border border-border bg-card hover:bg-accent hover:border-primary/40 text-muted-foreground hover:text-foreground transition-all cursor-pointer"
+                  className="px-3 py-1.5 text-xs font-medium rounded-lg border border-border bg-card hover:bg-accent text-muted-foreground hover:text-foreground transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   {example.label}
                 </button>
