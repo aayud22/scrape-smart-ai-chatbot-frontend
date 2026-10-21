@@ -125,14 +125,14 @@ export default function ScrapeTab({
       {/* Workspace Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base sm:text-lg font-semibold tracking-tight text-foreground">Scraped Content</h2>
+          <h2 className="text-base sm:text-lg font-serif font-normal tracking-tight text-foreground">Scraped Content</h2>
           <p className="text-xs text-muted-foreground mt-0.5">
             {targetUrl ? targetUrl.replace(/^https?:\/\//, "") : "Extracted page structure"}
           </p>
         </div>
 
         {/* View Selection Tabs */}
-        <div className="flex items-center gap-1 bg-accent/60 p-1 rounded-xl border border-border">
+        <div className="flex items-center gap-1 bg-accent/60 p-1 rounded-lg border border-border">
           {[
             { id: "markdown", label: "Markdown", icon: FileText },
             { id: "json", label: "JSON", icon: FileJson },
@@ -143,10 +143,10 @@ export default function ScrapeTab({
               type="button"
               onClick={() => setScrapeView(tab.id as ScrapeView)}
               className={cn(
-                "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer",
+                "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
                 scrapeView === tab.id 
-                  ? "bg-card text-foreground shadow-xs" 
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-card text-foreground font-semibold border border-border/60" 
+                  : "text-muted-foreground hover:text-foreground font-normal"
               )}
               aria-label={`View as ${tab.label}`}
             >
@@ -160,10 +160,10 @@ export default function ScrapeTab({
       {/* Main Workspace Area */}
       <div>
         {scrapeView !== "table" ? (
-          <div className="rounded-xl border border-border bg-card overflow-hidden shadow-xs flex flex-col">
+          <div className="rounded-xl border border-border bg-card overflow-hidden flex flex-col">
             {/* Editor Top Bar */}
-            <div className="flex items-center justify-between px-4 py-2.5 border-b border-border bg-muted/40">
-              <span className="text-xs font-medium text-muted-foreground font-mono">
+            <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-accent/30">
+              <span className="text-xs font-mono font-medium text-muted-foreground">
                 {scrapeView === "markdown" ? "content.md" : "data.json"}
               </span>
 
@@ -171,33 +171,33 @@ export default function ScrapeTab({
                 <button 
                   type="button"
                   onClick={handleCopy}
-                  className="flex items-center gap-1.5 px-3 py-1 bg-card hover:bg-accent text-foreground text-xs font-medium rounded-lg border border-border transition-all cursor-pointer"
+                  className="flex items-center gap-1.5 px-3 py-1 bg-card hover:bg-accent text-foreground text-xs font-medium rounded-lg border border-border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   aria-label="Copy content"
                 >
-                  {isCopied ? <Check className="w-3.5 h-3.5 text-primary" /> : <Copy className="w-3.5 h-3.5" />}
+                  {isCopied ? <Check className="w-3.5 h-3.5 text-success" /> : <Copy className="w-3.5 h-3.5 text-muted-foreground" />}
                   <span>{isCopied ? "Copied" : "Copy"}</span>
                 </button>
                 <button 
                   type="button"
                   onClick={() => handleDownload(scrapeView as "json" | "markdown")}
-                  className="flex items-center gap-1.5 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-lg hover:brightness-110 transition-all cursor-pointer shadow-xs"
+                  className="flex items-center gap-1.5 px-3 py-1 bg-card hover:bg-accent text-foreground text-xs font-medium rounded-lg border border-border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   aria-label="Download file"
                 >
-                  <Download className="w-3.5 h-3.5" />
+                  <Download className="w-3.5 h-3.5 text-muted-foreground" />
                   <span>Download</span>
                 </button>
               </div>
             </div>
 
             {/* Code Content */}
-            <div className="p-4 sm:p-6 overflow-auto max-h-[600px] font-mono text-xs leading-relaxed">
+            <div className="p-4 sm:p-6 overflow-auto max-h-[600px] font-mono text-xs sm:text-sm leading-relaxed">
               <div className="flex gap-4">
-                <div className="hidden sm:flex flex-col text-right text-muted-foreground/60 select-none pr-3 border-r border-border">
+                <div className="hidden sm:flex flex-col text-right text-muted-foreground/50 select-none pr-3 border-r border-border font-mono text-xs">
                   {Array.from({ length: Math.min(contentLines.length, 500) }).map((_, i) => (
                     <div key={i}>{i + 1}</div>
                   ))}
                 </div>
-                <pre className="text-foreground whitespace-pre-wrap break-words flex-1">
+                <pre className="text-foreground font-mono whitespace-pre-wrap break-words flex-1">
                   {scrapeView === "markdown" 
                     ? scrapeData.markdown 
                     : JSON.stringify(scrapeData, null, 2)}
@@ -212,17 +212,17 @@ export default function ScrapeTab({
               <button 
                 type="button"
                 onClick={() => handleDownload("json")}
-                className="flex items-center gap-1.5 px-3 py-2 bg-card border border-border text-foreground text-xs font-medium rounded-lg hover:bg-accent transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 bg-card border border-border text-foreground text-xs font-medium rounded-lg hover:bg-accent transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
-                <FileJson className="w-3.5 h-3.5" />
+                <FileJson className="w-3.5 h-3.5 text-muted-foreground" />
                 <span>Download JSON</span>
               </button>
               <button 
                 type="button"
                 onClick={() => handleDownload("markdown")}
-                className="flex items-center gap-1.5 px-3 py-2 bg-primary text-primary-foreground text-xs font-semibold rounded-lg hover:brightness-110 transition-all cursor-pointer shadow-xs"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 bg-card border border-border text-foreground text-xs font-medium rounded-lg hover:bg-accent transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
-                <Download className="w-3.5 h-3.5" />
+                <Download className="w-3.5 h-3.5 text-muted-foreground" />
                 <span>Download Markdown</span>
               </button>
             </div>
