@@ -103,7 +103,7 @@ export default function ScrapeTab({
   };
 
   if (isScraping) return <LoadingState message="Extracting page content..." />;
-  if (error) return <ErrorState title="Failed to extract content" message={error} />;
+  if (error) return <ErrorState title="Scrape failed" message={error} />;
   if (!scrapeData) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center space-y-4 animate-fade-in">

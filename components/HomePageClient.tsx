@@ -194,7 +194,7 @@ export default function HomePageClient() {
               {generalError && (
                 <div className="w-full mb-4 animate-slide-up">
                   <ErrorState 
-                    title="Error" 
+                    title="Chat error" 
                     message={generalError} 
                     onClose={() => setGeneralError("")}
                   />

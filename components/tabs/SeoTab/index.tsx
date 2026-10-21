@@ -163,7 +163,7 @@ export default function SeoTab({
   if (error) {
     return (
       <div className="max-w-2xl mx-auto w-full py-16 px-4 space-y-6">
-        <ErrorState title="Failed to fetch SEO score" message={error} />
+        <ErrorState title="SEO audit failed" message={error} />
         {onReAnalyze && (
           <div className="flex justify-center">
             <button

@@ -27,7 +27,7 @@ export default function SiteMapTab({
   }
 
   if (error) {
-    return <ErrorState title="Failed to map site" message={error} />;
+    return <ErrorState title="Site map failed" message={error} />;
   }
 
   if (!mapLinksData || mapLinksData.length === 0) {
