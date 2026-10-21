@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen flex flex-col justify-between">
       <main className="mx-auto w-full max-w-3xl px-6 py-16 flex-1">
         <h1 className="text-3xl font-bold tracking-tight">Privacy Policy</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Last updated: August 3, 2026</p>
+        <p className="mt-2 text-sm text-muted-foreground">Last updated: October 20, 2026</p>
 
         <div className="mt-10 space-y-8 text-sm leading-relaxed text-foreground/90">
           <section className="space-y-3">
@@ -49,15 +49,18 @@ export default function PrivacyPolicyPage() {
               The tool does not require an account, does not collect personal identity
               information, and does not maintain a user database. Content is processed
               in-memory or ephemerally to fulfill your immediate requests.
+              {/* TODO: verify against backend behavior */}
             </p>
           </section>
 
           <section className="space-y-3">
-            <h2 className="text-lg font-bold">3. Third-Party Services</h2>
+            <h2 className="text-lg font-bold">3. Third-Party Services and Previews</h2>
             <p>
               Requests are processed using a backend API service and third-party LLM
-              APIs. These external services process data in accordance with their respective
-              privacy policies.
+              providers. In addition, to generate screenshots and social link previews,
+              the browser sends analyzed page URLs to <code>api.microlink.io</code>, and
+              preview images are proxied through <code>wsrv.nl</code>. These external services
+              process data in accordance with their respective privacy policies.
             </p>
           </section>
 

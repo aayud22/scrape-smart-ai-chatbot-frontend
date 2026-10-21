@@ -90,13 +90,13 @@ export default function SiteMapTab({
       </div>
 
       {/* View Content */}
-      <div className="flex-1 min-h-0 overflow-hidden">
+      <div className="flex-1 min-h-0 overflow-hidden pb-[calc(4.25rem+env(safe-area-inset-bottom))] md:pb-0 flex flex-col">
         {viewMode === "graph" ? (
-          <div className="h-full">
+          <div className="h-full flex-1 min-h-0 relative">
             <MapTab isMapping={false} mapLinksData={mapLinksData} error={null} />
           </div>
         ) : (
-          <div className="h-full overflow-y-auto px-4 md:px-8 py-4">
+          <div className="h-full flex-1 min-h-0 overflow-y-auto px-4 md:px-8 py-4">
             <PagesTab isMapping={false} mapLinksData={mapLinksData} />
           </div>
         )}

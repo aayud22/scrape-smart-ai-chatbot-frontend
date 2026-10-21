@@ -3,7 +3,7 @@
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState, Dispatch, SetStateAction } from "react";
 import { getErrorMessage, postJson } from "@/utils/api";
-import { isValidUrl, cn, normalizeDomainInput } from "@/utils/helpers";
+import { isValidUrl, cn, normalizeDomainInput, makeId } from "@/utils/helpers";
 import { DashboardShell } from "@/components/layout/DashboardShell";
 import { LandingHero } from "@/components/landing/LandingHero";
 import ChatTab from "@/components/tabs/ChatTab";
@@ -121,13 +121,13 @@ export default function HomePageClient() {
   const handleAskQuestion = async (selectedQuestion?: string) => {
     const queryToAsk = (selectedQuestion || question).trim();
     if (!queryToAsk || isLoading) return;
-    const userMsgId = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `msg-${Date.now()}-${Math.random()}`;
+    const userMsgId = makeId();
     setChatHistory((prev) => [...prev, { id: userMsgId, role: "user", text: queryToAsk, timestamp: Date.now() }]);
     setIsLoading(true); setQuestion(""); setGeneralError("");
     try {
       const data = await postJson<ChatResponse>("/chat", { url, question: queryToAsk }, "Server connection failed.");
       if (data.status === "success") {
-        const botMsgId = typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `msg-${Date.now()}-${Math.random()}`;
+        const botMsgId = makeId();
         setChatHistory((prev) => [...prev, { id: botMsgId, role: "bot", text: data.bot_reply, timestamp: Date.now() }]);
       }
     } catch (error) { setGeneralError(getErrorMessage(error, "Server connection failed.")); }

@@ -53,6 +53,7 @@ export default function SeoTab({
   const [isFetchingAdvice, setIsFetchingAdvice] = useState(false);
 
   const [isExporting, setIsExporting] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyAdvice = () => {
@@ -125,6 +126,7 @@ export default function SeoTab({
 
   const handleExportPdf = async () => {
     if (!reportRef.current) return;
+    setExportError(null);
     setIsExporting(true);
     try {
       const html2pdf = (await import("html2pdf.js")).default;
@@ -134,8 +136,9 @@ export default function SeoTab({
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" as const }
       };
       await html2pdf().from(reportRef.current).set(opt).save();
-    } catch (error) {
-      console.error("PDF Export failed:", error);
+    } catch (err: unknown) {
+      console.error("PDF Export failed:", err);
+      setExportError(getErrorMessage(err, "Failed to export PDF report."));
     } finally { setIsExporting(false); }
   };
 
@@ -205,24 +208,31 @@ export default function SeoTab({
             <p className="text-xs sm:text-sm text-muted-foreground">Technical analysis of page structure, headings, and meta tags.</p>
           </div>
 
-          <div className="flex items-center gap-2.5 shrink-0">
-            <button 
-              type="button"
-              onClick={onReAnalyze} 
-              className="flex items-center gap-2 h-9 px-4 bg-primary text-primary-foreground font-semibold text-xs rounded-xl hover:brightness-110 transition-all cursor-pointer shadow-xs"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Re-run Audit</span>
-            </button>
-            <button 
-              type="button"
-              onClick={handleExportPdf} 
-              disabled={isExporting} 
-              aria-label="Export SEO report as PDF"
-              className="flex items-center justify-center w-9 h-9 border border-border bg-card rounded-xl hover:bg-accent transition-all cursor-pointer disabled:opacity-40"
-            >
-              {isExporting ? <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-primary border-t-transparent" /> : <Download className="w-3.5 h-3.5" />}
-            </button>
+          <div className="flex flex-col sm:items-end gap-1.5 shrink-0">
+            <div className="flex items-center gap-2.5">
+              <button 
+                type="button"
+                onClick={onReAnalyze} 
+                className="flex items-center gap-2 h-9 px-4 bg-primary text-primary-foreground font-semibold text-xs rounded-xl hover:brightness-110 transition-all cursor-pointer shadow-xs"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Re-run Audit</span>
+              </button>
+              <button 
+                type="button"
+                onClick={handleExportPdf} 
+                disabled={isExporting} 
+                aria-label="Export SEO report as PDF"
+                className="flex items-center justify-center w-9 h-9 border border-border bg-card rounded-xl hover:bg-accent transition-all cursor-pointer disabled:opacity-40"
+              >
+                {isExporting ? <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-primary border-t-transparent" /> : <Download className="w-3.5 h-3.5" />}
+              </button>
+            </div>
+            {exportError && (
+              <p className="text-xs text-red-500 font-medium">
+                {exportError}
+              </p>
+            )}
           </div>
         </div>
       </div>

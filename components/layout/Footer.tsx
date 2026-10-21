@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -7,7 +8,7 @@ export function Footer() {
         ScrapeSmart AI
       </span>
       <span className="text-xs text-muted-foreground">
-        © 2026 ScrapeSmart AI. Read any website, ask anything.
+        © 2026 ScrapeSmart AI. Website analysis and content exploration tool.
       </span>
       <div className="flex items-center gap-5 text-xs text-muted-foreground">
         <a
@@ -26,18 +27,18 @@ export function Footer() {
         >
           Developer
         </a>
-        <a
+        <Link
           href="/privacy"
           className="hover:text-foreground transition-colors"
         >
           Privacy Policy
-        </a>
-        <a
+        </Link>
+        <Link
           href="/terms"
           className="hover:text-foreground transition-colors"
         >
           Terms of Service
-        </a>
+        </Link>
       </div>
     </footer>
   );

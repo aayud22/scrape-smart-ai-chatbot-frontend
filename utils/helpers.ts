@@ -31,3 +31,10 @@ export function normalizeDomainInput(value: string) {
   }
   return { cleanValue, nextProtocol };
 }
+
+export function makeId(prefix = "msg"): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}

@@ -169,7 +169,7 @@ export default function MapTab({ isMapping, mapLinksData, error }: MapTabProps) 
         <button
           type="button"
           onClick={() => setShowPanel(!showPanel)}
-          className="md:hidden fixed bottom-24 right-4 z-50 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-md active:scale-95 transition-transform focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+          className="md:hidden fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] right-4 z-50 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-md active:scale-95 transition-transform focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer"
           aria-label={showPanel ? "Hide directory panel" : "Show directory panel"}
         >
           {showPanel ? (
