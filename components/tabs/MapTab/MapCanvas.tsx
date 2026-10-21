@@ -84,11 +84,10 @@ export const MapCanvas = ({
               id: `edge-${parentId}-${nodeId}`,
               source: parentId,
               target: nodeId,
-              animated: true,
+              animated: false,
               style: {
                 stroke: "var(--border)",
-                strokeDasharray: "4 4",
-                strokeWidth: 2,
+                strokeWidth: 1.5,
               },
             });
           }

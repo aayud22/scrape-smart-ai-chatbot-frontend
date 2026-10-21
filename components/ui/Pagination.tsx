@@ -106,7 +106,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           onClick={() => onPageChange(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1}
           aria-label="Previous page"
-          className="flex items-center justify-center h-8 px-3 gap-1.5 bg-card border border-border rounded-lg text-xs font-medium transition-all hover:bg-accent disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+          className="flex items-center justify-center h-8 px-3 gap-1.5 bg-card border border-border rounded-lg text-xs font-medium transition-colors hover:bg-accent disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           <ChevronLeft className="w-3.5 h-3.5" />
           <span>Prev</span>
@@ -130,9 +130,9 @@ export const Pagination: React.FC<PaginationProps> = ({
                   onClick={() => onPageChange(p as number)}
                   aria-label={`Page ${p}`}
                   className={cn(
-                    "w-8 h-8 rounded-lg text-xs font-medium transition-all cursor-pointer",
+                    "w-8 h-8 rounded-lg text-xs font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
                     currentPage === p 
-                      ? "bg-primary text-primary-foreground shadow-sm" 
+                      ? "bg-primary text-primary-foreground font-semibold" 
                       : "bg-card border border-border text-muted-foreground hover:bg-accent hover:text-foreground"
                   )}
                 >
@@ -147,7 +147,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
           disabled={currentPage === totalPages}
           aria-label="Next page"
-          className="flex items-center justify-center h-8 px-3 gap-1.5 bg-card border border-border rounded-lg text-xs font-medium transition-all hover:bg-accent disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+          className="flex items-center justify-center h-8 px-3 gap-1.5 bg-card border border-border rounded-lg text-xs font-medium transition-colors hover:bg-accent disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           <span>Next</span>
           <ChevronRight className="w-3.5 h-3.5" />

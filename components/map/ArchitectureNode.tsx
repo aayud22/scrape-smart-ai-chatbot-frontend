@@ -18,38 +18,38 @@ const ArchitectureNode = ({ data, selected }: NodeProps<Node>) => {
 
       <div
         className={cn(
-          "w-64 bg-card border rounded-2xl p-4 shadow-sm transition-all relative overflow-hidden group hover:shadow-md outline-none",
+          "w-60 bg-card border rounded-xl p-3.5 transition-colors relative overflow-hidden group outline-none",
           isRoot
-            ? "border-primary/60 ring-1 ring-primary/30 bg-card"
-            : "border-border",
+            ? "border-primary/60 bg-card"
+            : "border-border hover:border-primary/40",
           (nodeData.isHighlighted || selected) &&
-            "border-primary ring-2 ring-primary/40 bg-primary/5"
+            "border-primary ring-2 ring-primary/40 bg-accent/40"
         )}
       >
         {isRoot && (
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-primary" />
         )}
 
-        <div className="space-y-3 relative z-10">
+        <div className="space-y-2.5 relative z-10">
           {/* Header row */}
           <div className="flex items-center justify-between">
             <div
               className={cn(
-                "w-8 h-8 rounded-xl flex items-center justify-center transition-all",
+                "w-7 h-7 rounded-lg flex items-center justify-center transition-colors",
                 isRoot
                   ? "bg-primary/15 text-primary"
                   : "bg-accent text-primary"
               )}
             >
               {isRoot ? (
-                <Globe className="w-4 h-4" />
+                <Globe className="w-3.5 h-3.5" />
               ) : (
-                <Folder className="w-4 h-4" />
+                <Folder className="w-3.5 h-3.5" />
               )}
             </div>
             <div
               className={cn(
-                "flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border",
+                "flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium border",
                 isRoot
                   ? "bg-primary/10 border-primary/20 text-primary"
                   : "bg-accent border-border text-muted-foreground"

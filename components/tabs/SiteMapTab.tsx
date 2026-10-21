@@ -49,7 +49,7 @@ export default function SiteMapTab({
       {/* View Switcher Header */}
       <div className="shrink-0 flex items-center justify-between gap-3 px-4 sm:px-6 py-2.5 border-b border-border bg-card">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-foreground">
+          <span className="text-base font-serif font-normal text-foreground">
             Site Map
           </span>
           <span className="text-xs text-muted-foreground">
@@ -57,15 +57,15 @@ export default function SiteMapTab({
           </span>
         </div>
 
-        <div className="flex items-center gap-1 bg-accent/60 p-0.5 rounded-lg border border-border">
+        <div className="flex items-center gap-1 bg-accent/60 p-1 rounded-lg border border-border">
           <button
             type="button"
             onClick={() => setViewMode("graph")}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium transition-all cursor-pointer",
+              "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
               viewMode === "graph"
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "text-muted-foreground hover:text-foreground"
+                ? "bg-card text-foreground font-semibold border border-border/60"
+                : "text-muted-foreground hover:text-foreground font-normal"
             )}
             aria-label="View graph"
           >
@@ -76,10 +76,10 @@ export default function SiteMapTab({
             type="button"
             onClick={() => setViewMode("list")}
             className={cn(
-              "flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium transition-all cursor-pointer",
+              "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
               viewMode === "list"
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "text-muted-foreground hover:text-foreground"
+                ? "bg-card text-foreground font-semibold border border-border/60"
+                : "text-muted-foreground hover:text-foreground font-normal"
             )}
             aria-label="View list"
           >

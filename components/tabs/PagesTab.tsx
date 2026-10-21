@@ -282,7 +282,7 @@ export default function PagesTab({ isMapping, mapLinksData }: PagesTabProps) {
       {/* Pages Inventory Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base font-semibold tracking-tight text-foreground">Pages List</h2>
+          <h2 className="text-base sm:text-lg font-serif font-normal tracking-tight text-foreground">Pages List</h2>
           <p className="text-xs text-muted-foreground mt-0.5">{mapLinksData.length} total pages detected</p>
         </div>
 
@@ -296,14 +296,14 @@ export default function PagesTab({ isMapping, mapLinksData }: PagesTabProps) {
               setSearchQuery(e.target.value);
               setCurrentPage(1);
             }}
-            className="h-9 pl-9 pr-4 bg-card border border-border rounded-lg text-xs font-normal placeholder:text-muted-foreground/60 focus:border-primary/50 outline-none w-full transition-colors"
+            className="h-9 pl-9 pr-4 bg-card border border-border rounded-lg text-xs font-normal placeholder:text-muted-foreground/60 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none w-full transition-colors"
             aria-label="Search pages"
           />
         </div>
       </div>
 
       {/* Pages Inventory Table & Pagination Area */}
-      <div className="bg-card border border-border rounded-xl overflow-hidden shadow-xs flex flex-col">
+      <div className="bg-card border border-border rounded-xl overflow-hidden flex flex-col">
         <DataTable 
           columns={columns} 
           data={paginatedData}
