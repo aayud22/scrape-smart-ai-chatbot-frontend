@@ -33,7 +33,15 @@ export const metadata: Metadata = {
   },
 };
 
+import { Newsreader } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -41,11 +49,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="h-full antialiased">
-      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans">
+    <html lang="en" suppressHydrationWarning className={`h-full antialiased ${newsreader.variable}`}>
+      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans selection:bg-accent selection:text-foreground">
         <ThemeProvider
           attribute="data-theme"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
