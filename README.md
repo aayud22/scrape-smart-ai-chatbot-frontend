@@ -78,9 +78,11 @@ The application uses the following libraries declared in `package.json`:
    ```
    Open `.env.local` and set `NEXT_PUBLIC_API_URL` to your backend server URL (e.g., `http://localhost:8000` or a deployed backend endpoint):
    ```env
+   # Use your deployed backend URL here if you don't run the backend locally.
    NEXT_PUBLIC_API_URL=http://localhost:8000
    NEXT_PUBLIC_SITE_URL=http://localhost:3000
    ```
+   Restart the dev server after changing environment variables.
 
 4. Run the development server:
    ```bash
@@ -88,6 +90,12 @@ The application uses the following libraries declared in `package.json`:
    ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Troubleshooting
+
+- **Requests return 404 on localhost:3000**: `NEXT_PUBLIC_API_URL` is not set or the dev server was not restarted after editing `.env.local`.
+- **Browser shows a CORS error**: The backend server must be configured to allow origins from `http://localhost:3000`.
+- **First request hangs or times out**: If using a free-tier hosted backend, the server may take up to a minute to wake up on the first request.
 
 ## Project Structure
 
