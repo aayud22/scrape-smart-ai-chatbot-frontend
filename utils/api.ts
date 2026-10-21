@@ -14,7 +14,13 @@ type ApiFailureResponse = {
 };
 
 function getApiBaseUrl() {
-  return (process.env.NEXT_PUBLIC_API_URL ?? "").replace(/\/$/, "");
+  const url = process.env.NEXT_PUBLIC_API_URL;
+  if (!url || !url.trim()) {
+    throw new Error(
+      "NEXT_PUBLIC_API_URL is not set. Copy .env.example to .env.local, set it to your backend URL, and restart the dev server."
+    );
+  }
+  return url.trim().replace(/\/$/, "");
 }
 
 function getErrorMessageFromPayload(payload: ApiFailureResponse, fallback: string) {
