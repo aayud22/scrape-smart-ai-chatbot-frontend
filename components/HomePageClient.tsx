@@ -202,10 +202,10 @@ export default function HomePageClient() {
               )}
 
               <div className="max-w-3xl mx-auto w-full space-y-3">
-                <div className="relative flex items-center bg-card border border-border rounded-full p-1.5 pl-4 transition-colors focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 group">
+                <div className="relative flex items-center bg-card border border-border rounded-full p-1.5 pl-4 transition-colors focus-within:ring-2 focus-within:ring-primary focus-within:border-primary group">
                   <input 
                     type="text" 
-                    className="flex-1 bg-transparent px-2 py-1.5 outline-none text-sm font-normal text-foreground placeholder:text-muted-foreground/60 w-full" 
+                    className="flex-1 bg-transparent px-2 py-1.5 outline-none focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 text-sm font-normal text-foreground placeholder:text-muted-foreground/60 w-full" 
                     placeholder="Ask a question about this website..." 
                     value={question} 
                     onChange={(e) => {
@@ -225,7 +225,7 @@ export default function HomePageClient() {
                     onClick={() => handleAskQuestion()} 
                     disabled={isLoading || !question.trim()} 
                     aria-label="Send message"
-                    className="w-9 h-9 bg-primary hover:bg-primary-hover text-primary-foreground rounded-full transition-colors flex items-center justify-center disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    className="w-9 h-9 bg-primary hover:bg-primary-hover text-primary-foreground rounded-full transition-colors flex items-center justify-center disabled:opacity-30 cursor-pointer disabled:cursor-not-allowed shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     <ArrowUp className="w-4 h-4 stroke-2" />
                   </button>

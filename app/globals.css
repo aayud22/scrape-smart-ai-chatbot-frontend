@@ -156,6 +156,16 @@ body {
   outline-offset: 2px;
 }
 
+/* Form controls manage focus styling via borders/rings or parent focus-within container */
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: none;
+}
+
 /* Selection styles */
 ::selection {
   background: var(--accent);

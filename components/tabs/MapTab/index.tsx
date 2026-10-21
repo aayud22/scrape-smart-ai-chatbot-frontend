@@ -64,7 +64,7 @@ export default function MapTab({ isMapping, mapLinksData, error }: MapTabProps) 
                 placeholder="Find node or URL..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-9 w-full sm:w-56 pl-9 pr-3 bg-accent/50 border border-border rounded-xl text-xs font-normal placeholder:text-muted-foreground/60 focus:border-primary/50 outline-none transition-all"
+                className="h-9 w-full sm:w-56 pl-9 pr-3 bg-accent/50 border border-border rounded-xl text-xs font-normal placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none focus-visible:outline-none transition-all"
                 aria-label="Find node or URL"
               />
             </div>

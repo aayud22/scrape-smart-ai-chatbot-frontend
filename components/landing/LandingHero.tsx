@@ -123,19 +123,24 @@ export function LandingHero({
           {/* Command Bar Area */}
           <div className="w-full max-w-2xl mx-auto space-y-4 pt-2">
             <div className={cn(
-              "group relative z-20 flex flex-col sm:flex-row items-stretch p-1.5 rounded-xl border bg-card transition-colors focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2",
+              "group relative z-20 flex flex-col sm:flex-row items-stretch p-1.5 rounded-xl border bg-card transition-colors focus-within:ring-2 focus-within:ring-primary focus-within:border-primary",
               urlError ? "border-destructive" : "border-border"
             )}>
               {/* Protocol Dropdown */}
               <div 
                 ref={dropdownRef}
-                className="relative flex items-center px-4 border-b sm:border-b-0 sm:border-r border-border h-12 cursor-pointer hover:bg-accent/50 rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none transition-colors"
-                onClick={() => setIsProtocolOpen(!isProtocolOpen)}
+                className="relative flex items-center"
               >
-                <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                <button
+                  type="button"
+                  aria-label="Select protocol"
+                  aria-expanded={isProtocolOpen}
+                  className="flex items-center gap-1.5 px-4 h-12 border-b sm:border-b-0 sm:border-r border-border cursor-pointer hover:bg-accent/50 rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none transition-colors text-xs font-medium text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
+                  onClick={() => setIsProtocolOpen(!isProtocolOpen)}
+                >
                   <span>{protocol}</span>
                   <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", isProtocolOpen && "rotate-180")} />
-                </div>
+                </button>
                 
                 <AnimatePresence>
                   {isProtocolOpen && (
@@ -182,7 +187,7 @@ export function LandingHero({
                   setUrlError("");
                 }}
                 onKeyDown={(e) => e.key === "Enter" && handleStartAnalysis()}
-                className="flex-1 px-4 py-3 bg-transparent outline-none text-sm sm:text-base font-normal w-full placeholder:text-muted-foreground/60"
+                className="flex-1 px-4 py-3 bg-transparent outline-none focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 text-sm sm:text-base font-normal w-full placeholder:text-muted-foreground/60"
                 aria-label="Website domain or URL"
               />
 
@@ -192,7 +197,7 @@ export function LandingHero({
                 onClick={handleStartAnalysis}
                 disabled={!domainInput.trim() || !!urlError}
                 aria-label="Analyze Website"
-                className="h-11 sm:h-auto px-6 bg-primary hover:bg-primary-hover text-primary-foreground rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed shrink-0 mt-1 sm:mt-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="h-11 sm:h-auto px-6 bg-primary hover:bg-primary-hover text-primary-foreground rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed shrink-0 mt-1 sm:mt-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <span>Analyze</span>
                 <ArrowRight className="w-4 h-4" />

@@ -215,7 +215,7 @@ export default function SeoTab({
               <button 
                 type="button"
                 onClick={onReAnalyze} 
-                className="flex items-center gap-2 h-9 px-3.5 bg-primary hover:bg-primary-hover text-primary-foreground font-medium text-xs rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="flex items-center gap-2 h-9 px-3.5 bg-primary hover:bg-primary-hover text-primary-foreground font-medium text-xs rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Re-run Audit</span>

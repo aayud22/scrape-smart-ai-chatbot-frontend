@@ -296,7 +296,7 @@ export default function PagesTab({ isMapping, mapLinksData }: PagesTabProps) {
               setSearchQuery(e.target.value);
               setCurrentPage(1);
             }}
-            className="h-9 pl-9 pr-4 bg-card border border-border rounded-lg text-xs font-normal placeholder:text-muted-foreground/60 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none w-full transition-colors"
+            className="h-9 pl-9 pr-4 bg-card border border-border rounded-lg text-xs font-normal placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none focus-visible:outline-none w-full transition-colors"
             aria-label="Search pages"
           />
         </div>

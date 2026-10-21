@@ -78,7 +78,7 @@ export function Sidebar({ activeTab, setActiveTab, isCollapsed, onNewExtraction 
             onClick={onNewExtraction}
             aria-label="New Extraction"
             className={cn(
-              "flex items-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground font-medium text-xs rounded-lg transition-colors w-full cursor-pointer justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+              "flex items-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground font-medium text-xs rounded-lg transition-colors w-full cursor-pointer justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
               isCollapsed ? "h-11" : "h-9 px-4"
             )}
           >
@@ -98,7 +98,7 @@ export function Sidebar({ activeTab, setActiveTab, isCollapsed, onNewExtraction 
                 onClick={() => setActiveTab(item.id as SidebarItemType)}
                 aria-label={item.label}
                 className={cn(
-                  "group relative flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors duration-150 w-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1",
+                  "group relative flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors duration-150 w-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
                   isCollapsed && "justify-center",
                   isActive
                     ? "bg-accent text-foreground font-semibold"
